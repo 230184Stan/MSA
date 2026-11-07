@@ -18,7 +18,7 @@ export default function Layout() {
           <Link to="/" className="flex items-center gap-2 min-h-[44px]">
             <Trophy className="w-6 h-6 text-gold-400" aria-hidden />
             <span className="font-display font-bold text-lg leading-tight">
-              PNG Soccer
+              MSA
             </span>
           </Link>
           <nav className="flex items-center gap-1 text-sm font-medium">
@@ -72,7 +72,7 @@ export default function Layout() {
 
       <footer className="bg-pitch-800 text-pitch-100 text-center text-sm py-4">
         <div className="max-w-5xl mx-auto px-4">
-          Papua New Guinea Soccer Association
+          Madang Soccer Association
         </div>
       </footer>
     </div>

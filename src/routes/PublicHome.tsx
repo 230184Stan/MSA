@@ -38,10 +38,10 @@ export default function PublicHome() {
       {/* Hero */}
       <section className="rounded-2xl bg-gradient-to-br from-pitch-600 to-pitch-800 text-white p-6 sm:p-8 shadow-md">
         <h1 className="font-display font-extrabold text-2xl sm:text-3xl leading-tight">
-          Papua New Guinea Soccer Association
+          Madang Soccer Association
         </h1>
         <p className="mt-2 text-pitch-100 max-w-2xl">
-          Fixtures, results, and league standings for clubs across the country.
+          Fixtures, results, and league standings for clubs across Madang.
           Built to work on slow mobile data.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
