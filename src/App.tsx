@@ -9,6 +9,7 @@ import StandingsPage from '@/routes/StandingsPage';
 import SignInPage from '@/routes/SignInPage';
 import SignUpPage from '@/routes/SignUpPage';
 import DashboardPage from '@/routes/DashboardPage';
+import PlayersPage from '@/routes/PlayersPage';
 
 export default function App() {
   return (
@@ -30,6 +31,14 @@ export default function App() {
               element={
                 <ProtectedRoute roles={['public', 'club_manager', 'referee', 'admin']}>
                   <DashboardPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="players"
+              element={
+                <ProtectedRoute roles={['club_manager', 'admin']}>
+                  <PlayersPage />
                 </ProtectedRoute>
               }
             />

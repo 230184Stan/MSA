@@ -1,6 +1,6 @@
 import { useAuth } from '@/lib/auth';
 import { Link } from 'react-router-dom';
-import { Shield, Users, Flag, ChevronRight, Info } from 'lucide-react';
+import { Shield, Users, Flag, ChevronRight, Info, UserPlus } from 'lucide-react';
 
 const roleLabels: Record<string, string> = {
   admin: 'Administrator',
@@ -12,8 +12,15 @@ const roleLabels: Record<string, string> = {
 export default function DashboardPage() {
   const { profile } = useAuth();
   const role = profile?.role ?? 'public';
+  const canManagePlayers = role === 'admin' || role === 'club_manager';
 
-  const cards: { label: string; desc: string; icon: typeof Shield }[] = [
+  const tools: { label: string; desc: string; icon: typeof Shield; to?: string }[] = [
+    {
+      label: 'Players',
+      desc: 'Register players and assign them to your teams.',
+      icon: UserPlus,
+      to: canManagePlayers ? '/players' : undefined,
+    },
     {
       label: 'Seasons & windows',
       desc: 'Create seasons and set transfer windows.',
@@ -62,18 +69,37 @@ export default function DashboardPage() {
       <section>
         <h2 className="font-display font-bold text-lg mb-3">Your tools</h2>
         <ul className="space-y-2">
-          {cards.map((c) => {
+          {tools.map((c) => {
             const Icon = c.icon;
-            return (
-              <li key={c.label} className="card p-4 flex items-center gap-3 opacity-70">
+            const isLink = !!c.to;
+            const content = (
+              <>
                 <Icon className="w-7 h-7 text-pitch-600 shrink-0" aria-hidden />
                 <div className="min-w-0">
                   <p className="font-semibold">{c.label}</p>
                   <p className="text-sm text-pitch-600">{c.desc}</p>
                 </div>
-                <span className="ml-auto text-xs badge bg-pitch-100 text-pitch-700">
-                  Soon
-                </span>
+                {isLink ? (
+                  <ChevronRight className="w-5 h-5 ml-auto text-pitch-400" aria-hidden />
+                ) : (
+                  <span className="ml-auto text-xs badge bg-pitch-100 text-pitch-700">
+                    Soon
+                  </span>
+                )}
+              </>
+            );
+            return (
+              <li key={c.label}>
+                {isLink ? (
+                  <Link
+                    to={c.to!}
+                    className="card p-4 flex items-center gap-3 hover:border-pitch-300 transition-colors"
+                  >
+                    {content}
+                  </Link>
+                ) : (
+                  <div className="card p-4 flex items-center gap-3 opacity-70">{content}</div>
+                )}
               </li>
             );
           })}
