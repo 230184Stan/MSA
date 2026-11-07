@@ -1,10 +1,15 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Trophy, LogOut, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '@/lib/auth';
 
 export default function Layout() {
   const { session, profile, signOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const navLink = (path: string) =>
+    `px-3 py-2 rounded-lg hover:bg-pitch-600 min-h-[44px] flex items-center transition-colors ${
+      location.pathname === path ? 'bg-pitch-600' : ''
+    }`;
 
   async function handleSignOut() {
     await signOut();
@@ -22,17 +27,18 @@ export default function Layout() {
             </span>
           </Link>
           <nav className="flex items-center gap-1 text-sm font-medium">
-            <Link
-              to="/"
-              className="px-3 py-2 rounded-lg hover:bg-pitch-600 min-h-[44px] flex items-center"
-            >
+            <Link to="/" className={navLink('/')}>
               Home
             </Link>
-            <Link
-              to="/divisions"
-              className="px-3 py-2 rounded-lg hover:bg-pitch-600 min-h-[44px] flex items-center"
-            >
-              Divisions
+            <Link to="/fixtures" className={navLink('/fixtures')}>
+              Fixtures
+            </Link>
+            <Link to="/standings" className={navLink('/standings')}>
+              Standings
+            </Link>
+            <Link to="/divisions" className={navLink('/divisions')}>
+              <span className="hidden sm:inline">Divisions</span>
+              <span className="sm:hidden">Divs</span>
             </Link>
             {session ? (
               <>

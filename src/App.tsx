@@ -4,6 +4,8 @@ import Layout from '@/components/Layout';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import PublicHome from '@/routes/PublicHome';
 import DivisionsPage from '@/routes/DivisionsPage';
+import FixturesPage from '@/routes/FixturesPage';
+import StandingsPage from '@/routes/StandingsPage';
 import SignInPage from '@/routes/SignInPage';
 import SignUpPage from '@/routes/SignUpPage';
 import DashboardPage from '@/routes/DashboardPage';
@@ -17,6 +19,8 @@ export default function App() {
             {/* Public routes */}
             <Route index element={<PublicHome />} />
             <Route path="divisions" element={<DivisionsPage />} />
+            <Route path="fixtures" element={<FixturesPage />} />
+            <Route path="standings" element={<StandingsPage />} />
             <Route path="signin" element={<SignInPage />} />
             <Route path="signup" element={<SignUpPage />} />
 

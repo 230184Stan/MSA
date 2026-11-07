@@ -59,6 +59,28 @@ export interface Competition {
   created_at: string;
 }
 
+export interface Match {
+  id: string;
+  competition_id: string;
+  home_team_id: string;
+  away_team_id: string;
+  kickoff_at: string;
+  venue: string | null;
+  status: MatchStatus;
+  home_score: number | null;
+  away_score: number | null;
+  published: boolean;
+  created_at: string;
+}
+
+export interface MatchWithTeams extends Match {
+  home_team: { id: string; name: string; club_id: string };
+  away_team: { id: string; name: string; club_id: string };
+  competition: { id: string; name: string; division_id: string };
+  home_club?: { id: string; name: string };
+  away_club?: { id: string; name: string };
+}
+
 export interface StandingRow {
   competition_id: string;
   team_id: string;
@@ -70,4 +92,9 @@ export interface StandingRow {
   goals_against: number;
   goal_difference: number;
   points: number;
+}
+
+export interface StandingWithTeam extends StandingRow {
+  team: { id: string; name: string; club_id: string };
+  club: { id: string; name: string };
 }

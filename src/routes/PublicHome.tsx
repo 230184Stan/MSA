@@ -54,23 +54,29 @@ export default function PublicHome() {
       {/* Quick links */}
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <Link
-          to="/divisions"
+          to="/fixtures"
+          className="card p-4 flex items-center gap-3 hover:border-pitch-300 transition-colors min-h-[64px]"
+        >
+          <Calendar className="w-7 h-7 text-pitch-600" aria-hidden />
+          <span className="font-semibold">Fixtures</span>
+          <ChevronRight className="w-5 h-5 ml-auto text-pitch-400" aria-hidden />
+        </Link>
+        <Link
+          to="/standings"
           className="card p-4 flex items-center gap-3 hover:border-pitch-300 transition-colors min-h-[64px]"
         >
           <Trophy className="w-7 h-7 text-pitch-600" aria-hidden />
+          <span className="font-semibold">Standings</span>
+          <ChevronRight className="w-5 h-5 ml-auto text-pitch-400" aria-hidden />
+        </Link>
+        <Link
+          to="/divisions"
+          className="card p-4 flex items-center gap-3 hover:border-pitch-300 transition-colors min-h-[64px]"
+        >
+          <Users className="w-7 h-7 text-pitch-600" aria-hidden />
           <span className="font-semibold">Divisions</span>
           <ChevronRight className="w-5 h-5 ml-auto text-pitch-400" aria-hidden />
         </Link>
-        <div className="card p-4 flex items-center gap-3 opacity-60 min-h-[64px]">
-          <Calendar className="w-7 h-7 text-pitch-600" aria-hidden />
-          <span className="font-semibold">Fixtures</span>
-          <span className="ml-auto text-xs badge bg-pitch-100 text-pitch-700">Soon</span>
-        </div>
-        <div className="card p-4 flex items-center gap-3 opacity-60 min-h-[64px]">
-          <Users className="w-7 h-7 text-pitch-600" aria-hidden />
-          <span className="font-semibold">Standings</span>
-          <span className="ml-auto text-xs badge bg-pitch-100 text-pitch-700">Soon</span>
-        </div>
       </section>
 
       {/* Divisions preview */}
